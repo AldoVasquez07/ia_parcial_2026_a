@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EvoBipede — Algoritmo Genético</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+</head>
+<body>
+<header>
+  <div class="logo">EvoBipede <span id="gen-label">GEN 0</span></div>
+  <div id="phase-badge" class="phase-badge">LISTO</div>
+</header>
+<div class="main-layout">
+  <div class="canvas-area">
+    <canvas id="cv"></canvas>
+    <div class="controls">
+      <button class="btn primary" id="btn-start" onclick="startEvol()">▶ INICIAR</button>
+      <button class="btn" id="btn-pause" onclick="togglePause()" disabled>⏸ PAUSA</button>
+      <button class="btn" id="btn-next" onclick="forceNextGen()" disabled>⏭ NEXT GEN</button>
+      <button class="btn danger" onclick="resetAll()">↺ RESET</button>
+      <div class="view-toggle">
+        <button class="vtb active" id="vt-all" onclick="setView('all')">TODOS</button>
+        <button class="vtb" id="vt-best" onclick="setView('best')">MEJOR</button>
+      </div>
+      <div class="speed-ctrl">
+        <label>VEL</label>
+        <input type="range" id="speed-sl" min="1" max="12" value="4" oninput="setSpeed(this.value)">
+        <span class="sv" id="speed-val">4×</span>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar">
+    <div class="phase-panel">
+      <div class="phase-title">FASE DE APRENDIZAJE</div>
+      <div class="phase-name" id="phase-name">—</div>
+      <div class="phase-desc" id="phase-desc">Presiona INICIAR para comenzar la evolución</div>
+      <div class="jump-rate">Tasa de salto: <span id="jump-pct">0%</span></div>
+      <div class="jump-bar-wrap"><div class="jump-bar-fill" id="jump-bar" style="width:0%"></div></div>
+    </div>
+    <div class="panel">
+      <div class="panel-title">Estado</div>
+      <div class="stats-grid">
+        <div class="stat-box"><div class="stat-label">Generación</div><div class="stat-val blue" id="s-gen">0</div></div>
+        <div class="stat-box"><div class="stat-label">Vivos</div><div class="stat-val" id="s-alive">0</div></div>
+        <div class="stat-box"><div class="stat-label">Mejor Fit</div><div class="stat-val green" id="s-best">0</div></div>
+        <div class="stat-box"><div class="stat-label">Obs. superados</div><div class="stat-val orange" id="s-obs">0</div></div>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+    </div>
+    <div class="panel"><div class="panel-title">Curva Fitness</div><canvas id="fc"></canvas></div>
+    <div class="panel"><div class="panel-title">Genoma Élite</div><div class="genome-viz" id="genome-viz"></div></div>
+    <div class="panel"><div class="panel-title">Historial Gen.</div><div class="gen-history" id="gen-hist"></div></div>
+    <div class="panel">
+      <div class="panel-title">Método GA</div>
+      <div class="ga-info">
+        <strong>Población:</strong> 28 individuos<br>
+        <strong>Cromosoma:</strong> 20 genes reales ∈ [-1,1]<br>
+        <strong>Inicialización:</strong> Aleatoria + sesgo<br>
+        <strong>Selección:</strong> Torneo k=3<br>
+        <strong>Crossover:</strong> BLX-α (α=0.35)<br>
+        <strong>Mutación:</strong> Gaussiana σ=0.18<br>
+        <strong>Élite:</strong> 2 preservados<br>
+        <strong>Fitness:</strong> dist + saltos×bonus – muertes
+      </div>
+    </div>
+    <div class="panel"><div class="panel-title">Log</div><div class="log-list" id="log-list"></div></div>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/state.js"></script>
+<script src="js/genome.js"></script>
+<script src="js/avatar.js"></script>
+<script src="js/physics.js"></script>
+<script src="js/obstacles.js"></script>
+<script src="js/renderer.js"></script>
+<script src="js/genetic.js"></script>
+<script src="js/loop.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

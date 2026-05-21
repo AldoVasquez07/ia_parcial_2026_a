@@ -1,0 +1,114 @@
+.logo {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ac);
+}
+.logo span {
+  color: var(--tx2);
+  font-weight: 400;
+  font-size: .85rem;
+  margin-left: 8px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+.phase-badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .65rem;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: rgba(74,222,128,.1);
+  color: var(--ac);
+  border: 1px solid rgba(74,222,128,.25);
+  transition: all .3s;
+}
+.phase-badge.learning { background: rgba(249,115,22,.1); color: var(--ac2); border-color: rgba(249,115,22,.25); }
+.phase-badge.evolving { background: rgba(96,165,250,.1); color: var(--ac3); border-color: rgba(96,165,250,.25); }
+
+/* Controls */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+}
+.btn {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .6rem;
+  padding: 5px 12px;
+  border-radius: 5px;
+  border: 1px solid var(--br2);
+  background: var(--bg2);
+  color: var(--tx);
+  cursor: pointer;
+  transition: all .15s;
+  white-space: nowrap;
+  letter-spacing: .04em;
+}
+.btn:hover { background: var(--bg3); border-color: var(--ac); color: var(--ac); }
+.btn:disabled { opacity: .3; pointer-events: none; }
+.btn.primary { background: var(--ac); border-color: var(--ac); color: #0d0e14; font-weight: 600; }
+.btn.primary:hover { background: #22c55e; }
+.btn.danger { border-color: rgba(248,113,113,.4); color: var(--rd); }
+
+.view-toggle { display: flex; gap: 2px; }
+.vtb {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .58rem;
+  padding: 4px 9px;
+  border-radius: 4px;
+  border: 1px solid var(--br);
+  background: transparent;
+  color: var(--tx2);
+  cursor: pointer;
+  transition: all .15s;
+}
+.vtb.active { background: var(--bg4); border-color: var(--br2); color: var(--tx); }
+
+.speed-ctrl {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: auto;
+}
+.speed-ctrl label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .6rem;
+  color: var(--tx2);
+}
+input[type=range] {
+  -webkit-appearance: none;
+  height: 3px;
+  background: var(--bg4);
+  border-radius: 2px;
+  outline: none;
+  width: 70px;
+  cursor: pointer;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--ac3);
+  cursor: pointer;
+}
+.sv { font-family: 'IBM Plex Mono', monospace; font-size: .6rem; color: var(--ac3); min-width: 22px; text-align: right; }
+
+/* Genome visualization */
+.genome-viz { display: flex; flex-wrap: wrap; gap: 2px; margin-top: 3px; }
+.gene-block { width: 8px; height: 8px; border-radius: 2px; cursor: default; }
+
+/* Generation history dots */
+.gen-history { display: flex; flex-wrap: wrap; gap: 2px; margin-top: 3px; }
+.gen-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--br2);
+  cursor: default;
+  transition: background .2s;
+}
+.gen-dot.poor { background: rgba(248,113,113,.4); border-color: rgba(248,113,113,.5); }
+.gen-dot.ok   { background: rgba(249,115,22,.4);  border-color: rgba(249,115,22,.5);  }
+.gen-dot.good { background: rgba(250,204,21,.4);  border-color: rgba(250,204,21,.5);  }
+.gen-dot.great{ background: rgba(74,222,128,.6);  border-color: var(--ac);            }

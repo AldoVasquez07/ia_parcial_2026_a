@@ -1,0 +1,42 @@
+body {
+  background: var(--bg);
+  color: var(--tx);
+  font-family: 'Space Grotesk', sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.2rem;
+  height: 48px;
+  border-bottom: 1px solid var(--br);
+  background: var(--bg2);
+  flex-shrink: 0;
+}
+.main-layout {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.canvas-area {
+  display: flex;
+  flex-direction: column;
+  padding: .6rem;
+  gap: .5rem;
+  min-width: 0;
+  overflow: hidden;
+}
+#cv {
+  background: var(--bg3);
+  border: 1px solid var(--br);
+  border-radius: 8px;
+  flex: 1;
+  min-height: 0;
+  display: block;
+}

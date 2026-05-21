@@ -1,0 +1,19 @@
+:root {
+  --bg: #0d0e14;
+  --bg2: #13141d;
+  --bg3: #1a1c28;
+  --bg4: #20223a;
+  --ac: #4ade80;
+  --ac2: #f97316;
+  --ac3: #60a5fa;
+  --ac4: #e879f9;
+  --tx: #e2e4f0;
+  --tx2: #7880a0;
+  --br: rgba(255,255,255,0.07);
+  --br2: rgba(255,255,255,0.12);
+  --rd: #f87171;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-thumb { background: var(--br2); border-radius: 2px; }
